@@ -1,0 +1,53 @@
+<main class="main-container">
+  <h1>BUSCADOR DE DESTINOS</h1>
+
+  <!-- Buscador y filtros -->
+  <div class="filters">
+    <input type="text" placeholder="Buscar por nombre o país..." [(ngModel)]="busquedaTexto" />
+
+    <select [(ngModel)]="filtroContinente">
+      <option value="">Todos los continentes</option>
+      <option value="Europa">Europa</option>
+      <option value="Asia">Asia</option>
+      <option value="América">América</option>
+      <option value="África">África</option>
+      <option value="Oceanía">Oceanía</option>
+    </select>
+
+    <select [(ngModel)]="filtroTipo">
+      <option value="">Todos los tipos</option>
+      <option value="Playa">Playa</option>
+      <option value="Ciudad">Ciudad</option>
+      <option value="Montaña">Montaña</option>
+      <option value="Aventura">Aventura</option>
+    </select>
+
+    <select [(ngModel)]="filtroPrecio">
+      <option value="">Todos los precios</option>
+      <option value="economico">Económico &lt; 500€</option>
+      <option value="moderado">Moderado 500-1000€</option>
+      <option value="premium">Premium &gt; 1000€</option>
+    </select>
+
+    <button class="reset" (click)="resetFiltros()">Limpiar filtros</button>
+  </div>
+
+  <!-- Lista de destinos -->
+  <div class="destinos-container">
+    <div *ngFor="let destino of getDestinosFiltrados()" class="destino-card">
+      <img [src]="destino.imagen" [alt]="destino.nombre" />
+      <div class="info">
+        <h2>{{ destino.nombre }}</h2>
+        <p><strong>País:</strong> {{ destino.pais }}</p>
+        <p><strong>Continente:</strong> {{ destino.continente }}</p>
+        <p><strong>Tipo:</strong> {{ destino.tipo }}</p>
+        <p class="precio"><strong>Precio:</strong> €{{ destino.precio }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje si no hay resultados -->
+  <p *ngIf="getDestinosFiltrados().length === 0" class="no-result">
+    No se encontraron destinos para los filtros aplicados.
+  </p>
+</main>

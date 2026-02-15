@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía y fondo de toda la app */
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #cce0ff, #e6f0ff); /* azul clarito degradado */
+  color: #1a202c;
+  min-height: 100vh;
+}
